@@ -163,3 +163,7 @@ server.listen(PORT, () => {
 ### `.env` file and env variables
 - env variables are variables that are on your env, on your system, you can access them from the entire program, we can access them using different prog languages, with node.js we have the globally available `process` object that is a env object with all the env var, you can create a `.env` file and have your env variables in it and the process object will pick them up.
 - shouldn't push .env to github
+- update scripts: "start": "nodemon --env-file=.env server.js"
+- in server.js, `const PORT = process.env.PORT;`
+
+### `http` `req` object

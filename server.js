@@ -1,5 +1,5 @@
 import http from 'http';
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 const server = http.createServer((req, res) => {
     // res.setHeader('Content-Type', 'text/html');
@@ -10,8 +10,12 @@ const server = http.createServer((req, res) => {
     // res.write('<h1>h</h1>')
     // res.end(`<span style='color:red;'>hello</span>`);
 
-    res.writeHead(500, {'Content-Type': 'application/json'});
-    res.end(JSON.stringify({message:'Server crashed.'}));
+    console.log(req);
+    console.log(req.url);
+    console.log(req.method);
+
+    res.writeHead(500, {'Content-Type': 'text/html'});
+    res.end('<h1>hello</h1>');
 })
 
 server.listen(PORT, () => {
