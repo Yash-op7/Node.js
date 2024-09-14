@@ -41,3 +41,25 @@
 - so basically the environment is differnt but the language is the same.
 
 ## Modules
+- you can export objects, arrays, functions, or other types of data.
+### 1. First using `CommonJS` - the native node js module system
+> Below is a default import example, only one thing being exported so you can just import it into one variable inside index.js
+> `utils.js`
+```js
+function generateRandom() {
+    return Math.floor(Math.random() * 100) + 1;
+}
+
+module.exports = generateRandom;
+```
+> `index.js`
+```js
+const { generateRandom, isPrime } = require('./utils');
+
+console.log(`random number between 1 and 100: ${generateRandom()}`);
+```
+> Multiple exports and imports
+
+
+
+### 2. ES syntax
