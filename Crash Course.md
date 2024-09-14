@@ -227,6 +227,8 @@ const server = http.createServer((req, res) => {
             throw new Error('method not allowed');
         }
     } catch (error) {
+        res.writeHead(500, {'Content-Type': 'text/plain'});
+        res.end('Server Error');
         console.log("ERROR is", error);
     }
 })
