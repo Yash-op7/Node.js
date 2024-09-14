@@ -43,7 +43,7 @@ const server = http.createServer(async (req, res) => {
         res.end(data);
         console.log("ERROR is", error);
     }
-})
+});
 
 server.listen(PORT, () => {
     console.log(`Server, running on ${PORT}`)

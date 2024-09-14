@@ -303,6 +303,7 @@ const server = http.createServer(async (req, res) => {
 - `const filePath = path.join(__dirname, 'public', 'index.html')`
 - `async (req, res) => {..., const data = await fs.readFile(filePath);}`
 - `res.end()` is important otherwise your server wont return the response and you'll be waiting endlessly
+- If you want to perform different async opertions but in order then await them in a new async function, see fsDemo.js for example
 
 ### rest api, see `server2.js`
 
