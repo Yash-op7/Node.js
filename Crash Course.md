@@ -310,3 +310,10 @@ const server = http.createServer(async (req, res) => {
 > basically modules or functions that have access to the request and response objects, because they sit in the middle of incoming requests and outgoing responses, and they can execute any code that you want, they can also make changes to the req and res objects
 > often times we have authentication middleware, we might have access to res.user for the logged in user
 > you call the next middleware using next() function
+
+> see `server2.js`
+
+### `fs` module:
+1. `readFile()`
+2. `writeFile()`
+3. `appendFile()`
