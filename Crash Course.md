@@ -298,7 +298,7 @@ const server = http.createServer(async (req, res) => {
 - `req.url`, `req.method`
 - `res.write(data)` and `req.end(data)`
 - `req.setHeader('Content-Type', 'application/json or text/plain or text/html');`
-- `req.statusCode(500)`
+- `res.statusCode = 404;`
 - `req.writeHeader(statusCode, {'Content-Type':'text/plain'});`
 - `const filePath = path.join(__dirname, 'public', 'index.html')`
 - `async (req, res) => {..., const data = await fs.readFile(filePath);}`
