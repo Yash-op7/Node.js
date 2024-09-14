@@ -150,3 +150,9 @@ server.listen(PORT, () => {
 - inside scripts you can write two types of scripts:
     - ones that are either `start` or `test`, these can be invoked like so: `npm` `start`/`test`
     - anything other than `start`/`test`, like `dev`, these can be invoked like so: `npm run dev`
+
+### installing a module:
+- `npm i -D nodemon`: installs as a dev dependecy, which are dependencies not needed for prod env.
+
+- after installing, the `node_modules` folder will contain the installed module, the `package.json` will have the new project dependency under "dependencies" or 'devDependencies' key and the `package-lock.json` file which contains the entire dependency tree will be updated.
+- you dont want to or need to push node_modules to github as one can just do `npm i` which will check the package.json manifest file and install all the dependencies easily.

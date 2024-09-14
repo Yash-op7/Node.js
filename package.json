@@ -9,5 +9,8 @@
     "start": "node server.js"
   },
   "author": "yash",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
 }
