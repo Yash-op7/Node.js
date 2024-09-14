@@ -233,3 +233,72 @@ const server = http.createServer((req, res) => {
     }
 })
 ```
+### loading files
+- `fs` module, multiple ways to read files:
+    - default async callback
+    - synchronous version, which is blocking it stops your program until the file is read, not preferred.
+    - promise version, either with .then or async/await, preferred
+        - `import fs from 'fs/promises'
+> ### Get the path of the current  file
+```js
+import url from 'url';
+const __filename = url.fileURLToPath(import.meta.url);  // import.meta.url is the url of this file and it gets converted to a path
+```
+> ### Get the path of the current dir
+```js
+import path from 'path';
+const __dirname = path.dirname(__filename);
+```
+> ### to read a file's data:
+1. first make the method `async` as the fs.readFile() requires await as its a promise based file read
+2. get the filePath:
+```js
+import path as 'path';
+let filePath = path.join(__dirname, 'public', `index.html`);    // something like this
+```
+3. `const data = await fs.readFile(filePath);`
+4. then use the data, `res.write(data);`
+
+this is the complete example:
+```js
+const server = http.createServer(async (req, res) => {
+    try {
+        if (req.method === 'GET') {
+            let filePath;
+            if (req.url === '/') {
+                filePath = path.join(__dirname, 'public', 'index.html');
+            }
+            else if(req.url === '/about'){
+                filePath = path.join(__dirname, 'public', 'about.html');
+            } else {
+                throw new Error('route/page not found.');
+            }
+            const data = await fs.readFile(filePath);
+            res.setHeader('Content-Type', 'text/html');
+            res.write(data);
+            res.end();
+        } else {
+            // res.write('not get request\n');
+            throw new Error(`${req.method} not allowed`);
+        }
+    } catch (error) {
+        res.writeHead(500, {'Content-Type': 'text/html'});
+        let filePath = path.join(__dirname, 'public', 'fallback.html');
+        const data = await fs.readFile(filePath);
+        res.end(data);
+        console.log("ERROR is", error);
+    }
+})
+```
+
+## important points/methods thus far:
+- `import http from 'http';
+- `const server = http.createServer((req, res) => {})`
+- `server.listen(port, () => {console.log('running')})`
+- `req.url`, `req.method`
+- `res.write(data)` and `req.end(data)`
+- `req.setHeader('Content-Type', 'application/json or text/plain or text/html');`
+- `req.statusCode(500)`
+- `req.writeHeader(statusCode, {'Content-Type':'text/plain'});`
+- `const filePath = path.join(__dirname, 'public', 'index.html')`
+- `async (req, res) => {..., const data = await fs.readFile(filePath);}`
