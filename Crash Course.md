@@ -167,3 +167,67 @@ server.listen(PORT, () => {
 - in server.js, `const PORT = process.env.PORT;`
 
 ### `http` `req` object
+```js
+const server = http.createServer((req, res) => {
+    // res.setHeader('Content-Type', 'text/html');
+    // res.statusCode = 404;
+    // // or
+    
+    // res.write('<h1>h</h1>')
+    // res.write('<h1>h</h1>')
+    // res.end(`<span style='color:red;'>hello</span>`);
+
+    console.log(req.url);
+    console.log(req.method);
+
+    res.writeHead(500, {'Content-Type': 'text/html'});
+    res.end('<h1>hello</h1>');
+})
+```
+- `console.log(req.url);`:
+    - `/` for localhost:8000
+    - `/about` for localhost:8000/about
+- `console.log(req.method);`: `GET` default, for any page
+
+### creating a simple router using http module:
+```js
+import http from 'http';
+const PORT = process.env.PORT;
+
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end('<h1>home page</h1>');
+    } else {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end('<h1>not home page</h1>');
+    }
+
+    // res.writeHead(500, {'Content-Type': 'text/html'});
+    // res.end('<h1>hello</h1>');
+})
+
+server.listen(PORT, () => {
+    console.log(`Server, running on ${PORT}`)
+})
+```
+```js
+const server = http.createServer((req, res) => {
+    try {
+        if (req.method === 'GET') {
+            if (req.url === '/') {
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end('<h1>home page</h1>');
+            } else {
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end('<h1>not home page</h1>');
+            }
+        } else {
+            // res.write('not get request\n');
+            throw new Error('method not allowed');
+        }
+    } catch (error) {
+        console.log("ERROR is", error);
+    }
+})
+```
