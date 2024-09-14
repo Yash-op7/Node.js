@@ -325,3 +325,5 @@ const server = http.createServer(async (req, res) => {
 
 ### `os` module:
 - gives info about the sys, you can interact with the cpu, mem of the sys, mem used, etc
+### `url` module:
+- gives info about the sys, you can interact with the cpu, mem of the sys, mem used, etc
