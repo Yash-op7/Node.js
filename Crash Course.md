@@ -145,3 +145,8 @@ server.listen(PORT, () => {
     console.log(`Server, running on ${PORT}`)
 })
 ```
+
+### `package.json` > scripts:
+- inside scripts you can write two types of scripts:
+    - ones that are either `start` or `test`, these can be invoked like so: `npm` `start`/`test`
+    - anything other than `start`/`test`, like `dev`, these can be invoked like so: `npm run dev`
