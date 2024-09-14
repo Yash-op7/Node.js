@@ -156,3 +156,10 @@ server.listen(PORT, () => {
 
 - after installing, the `node_modules` folder will contain the installed module, the `package.json` will have the new project dependency under "dependencies" or 'devDependencies' key and the `package-lock.json` file which contains the entire dependency tree will be updated.
 - you dont want to or need to push node_modules to github as one can just do `npm i` which will check the package.json manifest file and install all the dependencies easily.
+
+### use `nodemon`:
+- inside package.json scripts: "start": "node server.js" -> "start": "nodemon server.js"
+
+### `.env` file and env variables
+- env variables are variables that are on your env, on your system, you can access them from the entire program, we can access them using different prog languages, with node.js we have the globally available `process` object that is a env object with all the env var, you can create a `.env` file and have your env variables in it and the process object will pick them up.
+- shouldn't push .env to github
