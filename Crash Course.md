@@ -369,6 +369,53 @@ myEmitter.emit('goodbye', 'john');
     - but if you add arguements thru the command line then they will be in `argv`
     - this is helpful when creating CLIs
     - for example:
-    
+
     `node processDemo.js -s some_data_in_the_command_line '98ds' 8`
     ![alt text](image-1.png)
+
+
+# 2nd course
+# points
+- in node window and document are not defined, they are defined in client side js like in the browser
+## node module system
+### global obj
+- console.log, setTimeout() are global objects
+- in browsers, `window` represents the global scope, so we can do window.console.log or console.log, the js engine will prefix the statement console.log with window because thats where its defined
+- similarly when we define variables, they are defined inside the window obj
+- but in node we dont have the window object we have another object called global, so the default stuff like console.log are still accessible like so global.console.log, but if you do var msg = 'txt' then this msg variable isn't accessible through global, the variabels defined in the file are not added to the global object, they are only scoped within the file
+- every file in node is a module, everything defined inside the modul like var and funcs are scope limited to that file/module, they are private, to use it outside you need to explicitly export it and make it public.
+- console.log(module), only works with commonjs
+
+- to export with commonjs:
+```js
+module.exports.log = log
+module.exports.myUrl = url;
+```
+- to import use the `require()` fuunction:
+```js
+const logger = require(./subfolder/logger.js);
+logger.log();
+```
+
+- to exoprt a single thing:
+`module.exports = log;`
+then import and call directly
+
+
+
+# 3rd course
+# node arch, and how it works
+![alt text](image-2.png)
+- a client makes a request to a node server
+- the request gets queuend in the event queue
+- then the event loop which is a like a machine that continuously watches the event queue, it picks up the top most request from the queue, the request can be of two typess:
+    - blocking ops or synchronous tasks, and
+    - non-blocking ops or ansynchronous tasks
+- if the req picked by the event loop is a non blocking operation, then it will process it and send the response to the user, else if its a blocking opertation, then to resolve the blocking op, it goes to the thread pool which is a pool of threads (workers), a thread is assigned to each blocking operation, which performs it and returns the result
+![alt text](image-3.png)
+![alt text](image-4.png)
+- we have limited num of threads, by default 4, if all workers are busy, then new blocking operation will need to wait, so its not scalable easily
+
+example:
+![alt text](image-5.png)
+- max thread pool size depends on your cores on the machine, max 8 for 8 cores

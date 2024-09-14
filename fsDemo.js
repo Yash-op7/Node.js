@@ -3,6 +3,9 @@ import fs from 'fs/promises';
 const read = async () => {
     const data = await fs.readFile('text.txt', 'utf-8');
     console.log(data);
+
+    // or 
+    // fs.readFile('text.txt', 'utf-8', (err, result) => console.log(result));
 }
 
 // read as a promise

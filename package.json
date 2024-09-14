@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "node js crash course code",
   "main": "http_server.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "test": "jest",
     "start": "nodemon --env-file=.env server2.js"
