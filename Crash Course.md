@@ -123,3 +123,25 @@ export default getPosts;
 import getPosts, { getPostsLength } from './postController.js';
 ```
 
+# `http` module
+``js
+import http from 'http';
+const PORT = 8000;
+
+const server = http.createServer((req, res) => {
+    // res.setHeader('Content-Type', 'text/html');
+    // res.statusCode = 404;
+    // or
+    
+    // res.write('<h1>h</h1>')
+    // res.write('<h1>h</h1>')
+    // res.end(`<span style='color:red;'>hello</span>`);
+
+    res.writeHead(500, {'Content-Type': 'application/json'});
+    res.end(JSON.stringify({message:'Server crashed.'}));
+})
+
+server.listen(PORT, () => {
+    console.log(`Server, running on ${PORT}`)
+})
+```
