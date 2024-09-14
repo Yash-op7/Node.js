@@ -1,3 +1,9 @@
+> ## General Goals
+### Modules
+### Event Loop
+### Asynchronous Programming
+
+# Node.js YT Course:
 <!-- https://www.youtube.com/watch?v=32M1al-Y6Ag&t=0s -->
 
 - What is node.js, how does it work
