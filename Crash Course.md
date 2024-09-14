@@ -303,3 +303,10 @@ const server = http.createServer(async (req, res) => {
 - `const filePath = path.join(__dirname, 'public', 'index.html')`
 - `async (req, res) => {..., const data = await fs.readFile(filePath);}`
 - `res.end()` is important otherwise your server wont return the response and you'll be waiting endlessly
+
+### rest api, see `server2.js`
+
+### middleware
+> basically modules or functions that have access to the request and response objects, because they sit in the middle of incoming requests and outgoing responses, and they can execute any code that you want, they can also make changes to the req and res objects
+> often times we have authentication middleware, we might have access to res.user for the logged in user
+> you call the next middleware using next() function
