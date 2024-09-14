@@ -327,3 +327,31 @@ const server = http.createServer(async (req, res) => {
 - gives info about the sys, you can interact with the cpu, mem of the sys, mem used, etc
 ### `url` module:
 - gives info about the sys, you can interact with the cpu, mem of the sys, mem used, etc
+
+### `EventEmitter`
+- you can create custom events and you can listen for them
+- great for real-time apps
+- you can also listen to built in events like data events on a stream
+- the `.on()` method is used to register event listeners, you can listen to multiple events and have multiple listeners for the same event
+```js
+import { EventEmitter } from "events";
+
+const myEmitter = new EventEmitter();
+
+function greetHandler() {
+    console.log('Hello world');
+}
+function goodbyeHandler(name) {
+    console.log('goodbye', name);
+}
+
+// register event listeners
+myEmitter.on('greet', greetHandler);
+myEmitter.on('goodbye', goodbyeHandler);
+
+// emit events
+myEmitter.emit('greet');
+myEmitter.emit('goodbye', 'john');
+```
+- this allows you to emit events from anywhere and create real-time applications
+- you can also pass data with the events
