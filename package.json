@@ -1,0 +1,11 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "node js crash course code",
+  "main": "http_server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "yash",
+  "license": "ISC"
+}

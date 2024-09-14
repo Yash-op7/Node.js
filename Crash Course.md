@@ -37,3 +37,7 @@
 - node js comes with a REPL - read eval print loop, basically command line environment to run node
 ### new node project
 > `npm init` or `npm init -y` to skip questions
+- in node.js there is no window and document object because these are part of the browser, instead we have the global and process objects which contains functions like setTimeout, setInterval, these are not part of JS, they are part of the browser's web APIs, and are also available to node, there is no document object because there is DOM, as the document object pertains to the dom, but there is a process object which pertains to the current process which contains things env vars etc.
+- so basically the environment is differnt but the language is the same.
+
+## Modules
