@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "start": "nodemon --env-file=.env server.js"
+    "start": "nodemon --env-file=.env server2.js"
   },
   "author": "yash",
   "license": "ISC",

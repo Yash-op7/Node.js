@@ -302,3 +302,4 @@ const server = http.createServer(async (req, res) => {
 - `req.writeHeader(statusCode, {'Content-Type':'text/plain'});`
 - `const filePath = path.join(__dirname, 'public', 'index.html')`
 - `async (req, res) => {..., const data = await fs.readFile(filePath);}`
+- `res.end()` is important otherwise your server wont return the response and you'll be waiting endlessly
