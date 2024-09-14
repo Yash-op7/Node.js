@@ -355,3 +355,20 @@ myEmitter.emit('goodbye', 'john');
 ```
 - this allows you to emit events from anywhere and create real-time applications
 - you can also pass data with the events
+
+### `process` obj
+- global obj
+- it has an argv property which has two values by default:
+    <pre>
+    argv: [
+            '/opt/homebrew/Cellar/node/22.5.1/bin/node',
+            '/Users/yashmeena/Desktop/stuff/git repos/Node.js/processDemo.js'
+        ],
+    </pre>
+    - they are the path to node.js and the path to the current file
+    - but if you add arguements thru the command line then they will be in `argv`
+    - this is helpful when creating CLIs
+    - for example:
+    
+    `node processDemo.js -s some_data_in_the_command_line '98ds' 8`
+    ![alt text](image-1.png)
