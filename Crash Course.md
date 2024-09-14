@@ -318,3 +318,8 @@ const server = http.createServer(async (req, res) => {
 1. `readFile()`
 2. `writeFile()`
 3. `appendFile()`
+
+### `path` module:
+- it gives you utilities to work with paths
+- it doesn't matter if its the current path or a real paths, this module helps you work with path values
+
