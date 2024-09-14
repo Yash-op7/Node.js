@@ -1,4 +1,4 @@
-const {generateRandom, isPrime} = require('./utils');
+import isPrime, {func} from "./utils.js";
 
-let x = generateRandom();
-console.log(`random number between 1 and 100: ${x} and its ${isPrime(x) ? "a": "not a"} prime number.`);
+console.log(isPrime(5));
+func(3, 4, 1);

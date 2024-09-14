@@ -9,6 +9,6 @@ function isPrime(x) {
     return true;
 }
 
-module.exports = {
-    generateRandom, isPrime
-};
+export default isPrime;
+
+export const func = () => console.log('2024-09-14 08:04:31');

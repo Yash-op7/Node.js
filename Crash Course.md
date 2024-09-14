@@ -54,12 +54,72 @@ module.exports = generateRandom;
 ```
 > `index.js`
 ```js
-const { generateRandom, isPrime } = require('./utils');
+const generateRandom = require('./utils');
 
 console.log(`random number between 1 and 100: ${generateRandom()}`);
 ```
 > Multiple exports and imports
+> `utils.js`
+```js
+function generateRandom() {
+    return Math.floor(Math.random() * 100) + 1;
+}
 
+function isPrime(x) {
+    for(let i=2;i <= Math.sqrt(x);i++) {
+        if(x % i == 0) return false;
+    }
+    return true;
+}
 
+module.exports = {
+    generateRandom, isPrime
+};
+```
+> `index.js`
+```js
+const {generateRandom, isPrime} = require('./utils');
 
+let x = generateRandom();
+console.log(`random number between 1 and 100: ${x} and its ${isPrime(x) ? "a": "not a"} prime number.`);
+```
 ### 2. ES syntax
+to use es module syntax, in the package.json add: `"type":"module"`, there are two options `commonjs` and `module`
+
+```js
+const posts = [
+    {id:1 , title: 'Post 1'},
+    {id:2, title: 'Post 2'}
+];
+```
+> first way to export
+```js
+export const getPosts = () => posts;
+// then in index.js
+import { getPosts } from './postController.js';   // .js is important else error
+```
+> or
+```js
+const getPosts = () => posts;
+export { getPosts };
+// and
+import { getPosts } from './postController.js';   // .js is important else error
+```
+
+> or export it as default so you can import one thing which will by default be whatever was default
+> can only have one default export
+```js
+const getPosts = () => posts;
+export default getPosts;
+```
+> or you might want to export one thing as a default and then others as non defaults
+> so consider
+```js
+const getPosts = () => posts;
+export const getPostsLength = () => posts.length;
+
+export default getPosts;
+// so this will export getPosts as default and getPostsLength as custom and these can be imported like so:
+import getPosts, { getPostsLength } from './postController.js';
+```
+
