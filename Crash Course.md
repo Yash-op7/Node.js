@@ -323,3 +323,5 @@ const server = http.createServer(async (req, res) => {
 - it gives you utilities to work with paths
 - it doesn't matter if its the current path or a real paths, this module helps you work with path values
 
+### `os` module:
+- gives info about the sys, you can interact with the cpu, mem of the sys, mem used, etc
