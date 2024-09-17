@@ -419,3 +419,69 @@ then import and call directly
 example:
 ![alt text](image-5.png)
 - max thread pool size depends on your cores on the machine, max 8 for 8 cores
+
+# misc.
+## 1. package.json what is it
+- The package.json file serves as the manifest for a Node.js project. It defines the project’s metadata, dependencies, and scripts, making it essential for managing the project lifecycle, including installation, testing, and deployment.
+- The package.json file ensures consistent installation of dependencies across environments and provides a central place for managing project configuration.
+- key fields are:
+    - name: of the proj
+    - version: of the proj
+    - description: of the proj
+    - main: entry point for the app
+    - scripts: tu run commands
+    - dependencies: list of external packages the project relies on
+    - devDependencies: list of dev related packages that are not needed for prod
+    - engines: node version
+    - license: MIT
+## middleware:
+```js
+const express = require('express');
+const app = express()
+
+app.use(middleware_func)
+or
+app.use((req, res, next) => {
+    console.log(`${new Date.toLocaleString()} - request received for: ${req.originalUrl}`);
+    next();
+})
+```
+
+## req (Request) Object
+The req object represents the incoming HTTP request and contains information about the request that was made by the client. Here are some important properties and methods of the req object:
+
+- `req.method`: The HTTP method used for the request (e.g., 'GET', 'POST', 'PUT', 'DELETE').
+
+- `req.url`: The URL of the request, including the path and query string.
+
+req.originalUrl: The original URL of the request. This is especially useful if your application is using a router and the URL might have been modified.
+
+req.headers: An object containing the headers sent with the request. Headers include metadata like content type, authorization tokens, etc.
+
+req.query: An object containing the parsed query string parameters. For example, for the URL '/search?term=node&sort=asc', req.query would be { term: 'node', sort: 'asc' }.
+
+req.params: An object containing route parameters from the URL. For example, in the route /user/:id, if the URL is /user/123, req.params.id would be '123'.
+
+req.body: Contains data sent in the request body. This is typically used with POST or PUT requests. For parsing JSON bodies, middleware like express.json() is used.
+
+req.cookies: An object containing cookies sent by the client. Cookies are used to store data on the client-side and send it with requests.
+
+req.ip: The IP address of the client making the request.
+
+res (Response) Object
+The res object represents the HTTP response that your server will send back to the client. Here are some important properties and methods of the res object:
+
+res.status(code): Sets the HTTP status code for the response. For example, res.status(404) sets the status code to 404 Not Found.
+
+res.send(body): Sends the response body to the client. This could be a string, an object, or any other data.
+
+res.json(data): Sends a JSON response. This method automatically sets the Content-Type header to application/json.
+
+res.sendFile(path): Sends a file as a response. This method is useful for serving static files.
+
+res.redirect([status], path): Redirects the client to a different URL. The optional status code can specify the HTTP status code for the redirection (e.g., 301 for permanent redirection).
+
+res.cookie(name, value, [options]): Sets a cookie on the client. name is the name of the cookie, value is the value to store, and options is an optional object that can specify properties like expiration, path, domain, etc.
+
+res.clearCookie(name, [options]): Clears a cookie by setting its expiration date to the past.
+

@@ -55,6 +55,7 @@ const notFoundHandler = (req, res) => {
     res.end(JSON.stringify({msg:'route not found.'}));
 }
 const server = createServer((req, res) => {
+    console.log('$ ',req.connection.remoteAddress);
     logger(req, res, () => {
         jsonMiddleware(req, res, () => {
             if (req.url === '/api/users' && req.method === 'GET') {

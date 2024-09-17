@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "node js crash course code",
   "main": "http_server.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "start": "nodemon --env-file=.env server2.js"
@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
   }
 }
