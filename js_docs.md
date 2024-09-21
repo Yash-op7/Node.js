@@ -2,6 +2,9 @@
 - JavaScript implements inheritance by using objects. Each object has an internal link to another object called its prototype.
 - That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. By definition, null has no prototype and acts as the final link in this prototype chain. 
 
+
+
+
 # Optional chaining (?.)
 The optional chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
 
