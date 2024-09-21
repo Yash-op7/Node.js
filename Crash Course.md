@@ -675,3 +675,11 @@ Stay curious, keep learning, keep sharing !
 5. How do React hooks, such as `useState` and `useEffect`, work? Can you explain their purpose and how they replace lifecycle methods?
 
 These questions are designed to assess a deep understanding of Node.js fundamentals, performance optimization, asynchronous programming, and related areas, while also touching on JavaScript and React concepts. For an R&D role, questions on optimization, scalability, and cutting-edge feature integration (like real-time applications and worker threads) are key.
+
+## Express, URL req object important properties:
+- `req.query`: This property contains the URL query parameters as an object. For example, in a URL like /auth?username=matt, req.query.username would be "matt".
+- `req.params`: Contains route parameters defined in the URL path.
+- `req.body`: Contains data submitted in the request body, useful for POST requests.
+- `req.headers`: Contains HTTP headers of the request.
+- `req.method`: Indicates the HTTP method used (GET, POST, etc.).
+- `req.url`: The full URL of the request.

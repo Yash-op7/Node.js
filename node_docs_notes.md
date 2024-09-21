@@ -55,3 +55,14 @@ features:
 - code splitting
 - loaders: transform files ilke ts to js before bundling
 - plugins: for further customization of the build process
+
+# 3. Node.js, the difference between development and production
+- no difference in node
+- but a few libraries recognize using the NODE_ENV env var and default it to `development`
+- In the wildly popular `express` framework, setting the NODE_ENV to production generally ensures that:
+    - logging is kept to a minimum, essential level
+    - more caching levels take place to optimize performance
+- `export NODE_ENV=production`
+# 4. Profiling Node.js Applications
+- Profiling in Node.js applications refers to the process of analyzing the performance of your application to identify bottlenecks, inefficiencies, and resource usage. 
+- It helps you understand where your application spends most of its time, which can guide optimization efforts.

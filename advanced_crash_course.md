@@ -38,4 +38,18 @@ async function sleep(millis) {
  * sleep(100).then(() => console.log(Date.now() - t)) // 100
  */
 ```
+- while function invokation to default some value while not defaulting others, pass it as `undefined`
+## generators:
+- use `function*` instead of `function` and create a normal function with a `yield` keyword as return
+- a generator function is an iterable logic which has non-continuos execution
+- basically a generator function allows you to create a tool which can generate a single-use portal variable which ressembles a sequence of values which can be fetched one at a time, and be iterated using a `for...of` loop
+```js
+function* plus21 (s=3, e=99, step=21) {
+    for(let i=s;i<=e;i+=step) yield i;
+}
 
+const gen1 = plus21(-21,undefined,20);
+for(let x of gen1) console.log(x);
+```
+- currying
+- create a clock app
