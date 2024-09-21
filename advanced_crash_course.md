@@ -27,6 +27,12 @@ const
 ```
 
 # Important Points:
+- this syntax:
+```js
+console.log((y => y + 10)(10));
+const calculate=(x, y) => x+y;
+console.log((y => y + 10)(calculate(1, 2)));
+```
 - `setTimeout(callback, delay, ...argsToTheCallback);`
 - Given a positive integer millis, write an asynchronous function that sleeps for millis milliseconds. It can resolve any value.
 ```js
@@ -43,6 +49,10 @@ async function sleep(millis) {
 - use `function*` instead of `function` and create a normal function with a `yield` keyword as return
 - a generator function is an iterable logic which has non-continuos execution
 - basically a generator function allows you to create a tool which can generate a single-use portal variable which ressembles a sequence of values which can be fetched one at a time, and be iterated using a `for...of` loop
+- The `function*` declaration creates a binding of a new generator function to a given name. A generator function can be exited and later re-entered, with its context (variable bindings) saved across re-entrances.
+- A `function*` declaration creates a `GeneratorFunction` object. Each time a generator function is called, it returns a new `Generator` object, which conforms to the iterator protocol. When the iterator's next() method is called, the generator function's body is executed until the first yield expression, which specifies the value to be returned from the iterator or, with yield*, delegates to another generator function. The next() method returns an object with a value property containing the yielded value and a done property which indicates whether the generator has yielded its last value, as a boolean. Calling the next() method with an argument will resume the generator function execution, replacing the yield expression where an execution was paused with the argument from next().
+
+
 ```js
 function* plus21 (s=3, e=99, step=21) {
     for(let i=s;i<=e;i+=step) yield i;
@@ -51,5 +61,6 @@ function* plus21 (s=3, e=99, step=21) {
 const gen1 = plus21(-21,undefined,20);
 for(let x of gen1) console.log(x);
 ```
+
 - currying
 - create a clock app

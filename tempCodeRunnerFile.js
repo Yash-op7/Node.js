@@ -1,1 +1,1 @@
-x = Math.random
+x, y
