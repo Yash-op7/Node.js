@@ -40,3 +40,15 @@ console.log(undefined);
 ## some points on type coercion:
 - `+` operator - if any one operand is string, then string concat is performed.
     - ❗️ if there is any other operator which deals with the string then the string will convert to int.
+
+## `Date`
+- use: 
+```js
+const date = new Date();
+date.getMonth();
+date.getMinutes();
+date.getFullYear();
+```
+```js
+const ms = Date.now(); // total ms elapsed till now from a reference start data
+```

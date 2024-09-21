@@ -1,6 +1,8 @@
 const print = (...args) => console.log(...args);
 
 
+const result = Date.now()
 
-const result = 4 + [] + 3* 9;
+
+
 print(result)

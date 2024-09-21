@@ -1,0 +1,2 @@
+- forgetting to use the new keyword.
+- inside callbacks: invoking functions instead of using ()=>func()
