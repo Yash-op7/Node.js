@@ -1,28 +1,19 @@
-const parent = {
-  value: 2,
-  method() {
-    return this.value + 1;
-  },
-};
-
-console.log(parent.method()); // 3
-// When calling parent.method in this case, 'this' refers to parent
-
-// child is an object that inherits from parent
-const child = {
-  __proto__: parent,
-};
-console.log(child.method()); // 3
-// When child.method is called, 'this' refers to child.
-// So when child inherits the method of parent,
-// The property 'value' is sought on child. However, since child
-// doesn't have an own property called 'value', the property is
-// found on the [[Prototype]], which is parent.value.
-
-child.value = 4; // assign the value 4 to the property 'value' on child.
-// This shadows the 'value' property on parent.
-// The child object now looks like:
-// { value: 4, __proto__: { value: 2, method: [Function] } }
-console.log(child.method()); // 5
-// Since child now has the 'value' property, 'this.value' means
-// child.value instead
+function Box(value) {
+    this.value = value;
+  }
+  Box.prototype.getValue = function () {
+    return this.value;
+  };
+  const box = new Box(1);
+  const box2 = new Box(4);
+  
+  // Mutate Box.prototype after an instance has already been created
+  Box.prototype.getValue = function () {
+    return this.value * 12;
+  };
+  box.__proto__.getValue = function () {
+    return this.value * 120;
+  };
+  console.log(box.getValue()); // 2
+  console.log(box2.getValue()); // 2
+  
