@@ -90,6 +90,58 @@ class Box {
 }
 ```
 
+- Let `Box` be the classname and `box` be the instance name then `Box.prototype` and `box.__proto__` point to the same memory loc, so we can alter the `Box` class through either of them and it affect all instances even after their initialization:
+```js
+function Box(value) {
+    this.value = value;
+  }
+  Box.prototype.getValue = function () {
+    return this.value;
+  };
+  const box = new Box(1);
+  const box2 = new Box(4);
+  
+  // Mutate Box.prototype after an instance has already been created
+  Box.prototype.getValue = function () {
+    return this.value * 12;
+  };
+  box.__proto__.getValue = function () {
+    return this.value * 120;
+  };
+  console.log(box.getValue());
+  console.log(box2.getValue());
+  ```
+> and some obj literals automatically have a default prototype
+```js
+Object.getPrototypeOf(Box) === Function.prototype
+// Object literals (without the `__proto__` key) automatically
+// have `Object.prototype` as their `[[Prototype]]`
+const object = { a: 1 };
+Object.getPrototypeOf(object) === Object.prototype; // true
+
+// Array literals automatically have `Array.prototype` as their `[[Prototype]]`
+const array = [1, 2, 3];
+Object.getPrototypeOf(array) === Array.prototype; // true
+
+// RegExp literals automatically have `RegExp.prototype` as their `[[Prototype]]`
+const regexp = /abc/;
+Object.getPrototypeOf(regexp) === RegExp.prototype; // true\
+```
+> We can "de-sugar" them into their constructor form.
+```js
+const array = new Array(1, 2, 3);
+const regexp = new RegExp("abc");
+```
+It may be interesting to note that due to historical reasons, some built-in constructors' prototype property are instances themselves. For example, Number.prototype is a number 0, Array.prototype is an empty array, and RegExp.prototype is /(?:)/.
+
+```js
+Number.prototype + 1; // 1
+Array.prototype.map((x) => x + 1); // []
+String.prototype + "a"; // "a"
+RegExp.prototype.source; // "(?:)"
+Function.prototype(); // Function.prototype is a no-op function by itself
+```
+
 # Optional chaining (?.)
 The optional chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
 
