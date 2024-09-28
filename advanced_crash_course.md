@@ -64,3 +64,39 @@ for(let x of gen1) console.log(x);
 
 - currying
 - create a clock app
+
+
+# Node.js Streams
+Streams is one of the most important and difficult topic in Node.js. It comes into play when you're working with a large amount of data, or performance is your concern
+- 4 types of streams:
+1. Readable: only read
+2. Writable: only write
+3. Duplex: read and write both
+4. Transform: changes how the data looks or behaves
+
+# Node.js Memory management:
+- Memory Leaks:
+    - sources
+        - not cleared timers or intervals
+        - global variables
+        - closures
+        - unreferenced nodes in the browser
+- Specific pattern while analysis which signifies memory leaks:
+![alt text](image-7.png)
+- never have global variables, they cause mem leaks, the reason is global var are attached to the window or global object, and the garbage collector cannot decide whether they are no longer needed or not because they are stuck to the root, so they are stuck there forever.
+- closures with an external variable reference: callbacks are ambiguous when it comes to garbage collecting, the GC is not goign to know whether this callback has finished or not so its not going to remove its reference.
+- simply a huge data object in the code, like a huge array, instead use some cache like `node-cache` or `memcached` in node and `sessionstorage` or `localstorage` in the browser
+- cyclic references in objects
+- remove event emitter listeners in nodejs, to deal with them just remove them and you're good otherwise they get stuck forever. example:
+```js
+const EventEmitter = require('events');
+...
+EventEmitter.on('start', callback1);
+...
+EventEmitter.remove('start');
+```
+- timers:
+![alt text](image-8.png)
+
+- How to see memory leaks via GC, use the `--trace_gc` flag:
+`node --trace_gc index.js`

@@ -7,10 +7,9 @@ app.use(express.json());
 
 app.get('/search/:id', (req, res) => {
     const obj = {name:'jsdf', 'date':new Date()};
-    // for (let value of obj) {
-    //     console.log(value);
-    // }
+    const {id} = req.params;
     console.log(Object.entries(obj));
+    console.log(id)
     res.send(obj);
 });
 
