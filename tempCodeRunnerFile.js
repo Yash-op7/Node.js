@@ -1,1 +1,2 @@
-new Box(2)
+import.meta.url);
+// console.log(__filename)

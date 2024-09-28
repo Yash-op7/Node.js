@@ -124,7 +124,7 @@ import getPosts, { getPostsLength } from './postController.js';
 ```
 
 # `http` module
-``js
+```js
 import http from 'http';
 const PORT = 8000;
 

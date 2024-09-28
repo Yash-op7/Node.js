@@ -193,3 +193,13 @@ date.getFullYear();
 ```js
 const ms = Date.now(); // total ms elapsed till now from a reference start data
 ```
+
+## imp points:
+- functions declared like this are hoisted to the top of its scope:
+```js
+console.log(f(3));
+
+function f(x) {
+    return x*x;
+}
+```
