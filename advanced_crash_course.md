@@ -100,3 +100,13 @@ EventEmitter.remove('start');
 
 - How to see memory leaks via GC, use the `--trace_gc` flag:
 `node --trace_gc index.js`
+another way is to use:
+`node --inspect index.js` -> now we can go to the browser and write chrome://inspect
+
+also use: `npx pm2 start index.js`, this will start the process in the background and tell you the cpu and memory usage and you can do:
+`npx pm2 logs` you can inspect logs, &
+`npx pm2 monit` for live monitoring
+`npx pm2 status`
+- pm2 is a very cool tool that you can use in production for example on docker images.
+
+- `npx pm2 stop index.js`

@@ -22,3 +22,6 @@ In the new app router, for each frontend route simply make a folder with the rou
 - Export Static Site − Next.js allows to export full static site from your web application.
 
 - Built-in Typescript Support − Next.js is written in Typescripts and provides excellent Typescript support.
+
+# nested layouts:
+![alt text](image-9.png)

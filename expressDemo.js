@@ -13,6 +13,10 @@ app.get('/search/:id', (req, res) => {
     res.send(obj);
 });
 
+app.get('/', (req, res) => {
+    res.send('Hello world 🏆');
+})
+
 app.listen(8003, () => {
     console.log('Server is running on port 8003');
 });

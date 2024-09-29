@@ -1,2 +1,7 @@
-const a = [1, 2, 3, 4];
-console.log(a);
+import {readFile} from 'fs/promises';
+
+readFile('./text.txt', 'utf-8').then(
+    (d) => console.log(d)
+).catch(
+    (err)=>console.error(err)
+);
