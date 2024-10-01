@@ -5,3 +5,11 @@ readFile('./text.txt', 'utf-8').then(
 ).catch(
     (err)=>console.error(err)
 );
+
+let json = {
+    "a":{
+        "b":{
+            "c":1
+        }
+    }
+};
